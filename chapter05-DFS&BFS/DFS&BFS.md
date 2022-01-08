@@ -127,3 +127,49 @@
 
   dfs(graph, 1 visited) # 1 2 7 6 8 3 4 5
   ```
+
+# BFS
+
+- Breadth First Search, 너비 우선 탐색
+- 그래프에서 가까운 노드부터 탐색하는 알고리즘, 큐와 관련
+- 일반적으로 DFS보다 수행 시간 빠름(둘 다 O(N))
+- deque 자료구조 이용
+- 동작 과정
+
+  1. 탐색 시작 노드를 큐에 삽입하고 방문 처리
+  2. 큐에서 노드를 꺼내(아래부터 꺼내는 것) 해당 노드의 인접 노드 중 방문하지 않은 노드를 모두 큐에 삽입하고 방문 처리
+  3. 2번을 더 이상 수행할 수 없을 때까지 반복
+
+  ```
+  from collections import deque
+
+  def bfs(graph, start, visited):
+    queue = deque([start])
+    visited[start] = True
+
+    # 큐가 빌 때까지
+    while queue:
+      v = queue.popleft()
+      print(v, end=' ')
+
+      for i in graph[v]:
+        if not visited[i]:
+          queue.append(i)
+          visited = True
+
+  graph =[
+      [],
+      [2, 3, 8], # 노드 1
+      [1, 7],
+      [1, 4, 5],
+      [3, 5],
+      [3, 4],
+      [7],
+      [2, 6, 8],
+      [1, 7] # 노드 8
+  ]
+
+  visited = [False] * 9
+
+  bfs(graph, 1, visited) # 1 2 3 8 7 4 5 6
+  ```
