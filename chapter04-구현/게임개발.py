@@ -30,6 +30,7 @@ while True:
   temp_x = x + move_x[direction]
   temp_y = y + move_y[direction]
 
+  # 방문한 적 없고 바다가 아니면
   # 이동하고 방문찍고 count++, turn 초기화
   if visited_map[temp_x][temp_y] == 0 and input_map[temp_x][temp_y] == 0:
     x = temp_x
@@ -48,6 +49,7 @@ while True:
     temp_x = x - move_x[direction]
     temp_y = y - move_y[direction]
 
+    # 방문은 했었지만 갈 수 있는 곳으로 감
     if input_map[temp_x][temp_y] == 0:
       x = temp_x
       y = temp_y 
