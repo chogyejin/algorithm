@@ -17,6 +17,7 @@ def count_icecream(x,y):
   if data[x][y] == 0:
     data[x][y] = 1
     #상하좌우 재귀
+    # return 값을 사용하지 않고 단순히 방문 처리만 수행
     count_icecream(x - 1, y)
     count_icecream(x + 1, y)
     count_icecream(x, y - 1)
