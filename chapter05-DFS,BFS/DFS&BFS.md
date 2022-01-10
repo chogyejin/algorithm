@@ -173,3 +173,24 @@
 
   bfs(graph, 1, visited) # 1 2 3 8 7 4 5 6
   ```
+
+  - deque 자료구조 append(), popleft()
+
+  ```
+  from collections import deque
+
+  queue = deque()
+
+  queue.append(1)
+  # queue.append(2, 3) 안 됨
+  queue.append((4, 5))
+  queue.append((6, 7))
+
+  a = queue.popleft()
+  b = queue.popleft()
+  c, d = queue.popleft()
+
+  print(a, b, c, d) # 1 (4, 5) 6 7
+  print(type(a), type(b), type(c), type(d)) # int tuple int int
+
+  ```
