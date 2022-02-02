@@ -1,3 +1,4 @@
+# 262p 예제 9-3 전보
 # C도시에서 메시지 최대한 많이 보냄
 # 도시 N개, 통로 M개, C도시 출발, X도시에서 Y도시 시간 Z
 # 메시지 받는 도시 개수, 모두 메시지를 받는 데까지 걸리는 시간 출력
@@ -25,7 +26,7 @@ for _ in range(m):
 def send_message_from(c):
   q = []
   result[c] = 0
-  heapq.heappush(q, (0, c)) # 시작 노드 push
+  heapq.heappush(q, (result[c], c)) # 시작 노드 push
 
   while q:
     dist, now = heapq.heappop(q)
@@ -33,8 +34,8 @@ def send_message_from(c):
     if result[now] < dist: # 갱신한 적 있으면 패스
       continue
     
-    for i in graph[now]:
-      cost = dist + i[1] # i[i]는 그 노드까지의 거리 값
+    for i in graph[now]: # now 노드에 붙은 노드들의 (비용, 노드번호)
+      cost = dist + i[1] # i[1]는 그 노드까지의 거리 값
       
       if cost < result[i[0]]: # i[0]는 노드, 갱신이 가능하다면 갱신
         result[i[0]] = cost
