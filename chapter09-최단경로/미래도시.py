@@ -34,15 +34,16 @@ for k in range(1, n + 1):
     for b in range(1, n + 1):
       graph[a][b] = min(graph[a][b], graph[a][k] + graph[k][b])
 
-# 수행된 결과를 출력
-distance = graph[1][k] + graph[k][x]
+# result는 1~k, k~x 비용의 합 (각각 최소임)
+result = graph[1][k] + graph[k][x]
 
 # 도달 불가 -1 출력
-if distance >= 1e9:
+if result >= 1e9:
   print("-1")
 # 도달 가능 시 최소 이동 시간 출력 
 else:
-  print(distance)
+  print(result)
 
 # N 범위가 1 ~ 100이므로 플로이드 워셜로 해결 가능
+# 모든 지점에서 모든 지점으로 가는 최소 비용이기 때문에 1~k의 최소 비용 + k~x 최소 비용이 1~x의 최소 비용이 됨
 # 그림을 먼저 그려보자
